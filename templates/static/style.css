@@ -1,43 +1,94 @@
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  padding: 40px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+* {
+  box-sizing: border-box;
   margin: 0;
-  color: #333;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+  animation: backgroundFloat 20s infinite linear;
+}
+@keyframes backgroundFloat {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.container {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  width: 100%;
   text-align: center;
+  animation: fadeIn 1.5s ease;
+  transition: transform 0.3s ease;
 }
-h1 {
+.container:hover {
+  transform: scale(1.01);
+}
+.container h1 {
   color: #2c3e50;
-  margin-bottom: 30px;
-}
-form {
-  background-color: #ffffff;
-  display: inline-block;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+  font-size: 28px;
 }
 form input, form textarea {
-  margin: 10px 0;
   width: 100%;
-  max-width: 400px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  resize: vertical;
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f8f8f8;
   font-size: 16px;
+  transition: all 0.3s ease;
 }
-button {
-  margin-top: 15px;
-  padding: 12px 24px;
-  background-color: #2980b9;
+form input:focus, form textarea:focus {
+  border-color: #66a6ff;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(102, 166, 255, 0.3);
+}
+form button {
+  width: 100%;
+  background: linear-gradient(to right, #00b09b, #96c93d);
   color: white;
+  padding: 14px;
+  font-size: 17px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
 }
-button:hover {
-  background-color: #1c5980;
+form button:hover {
+  background: linear-gradient(to right, #43cea2, #185a9d);
+  transform: scale(1.02);
+}
+.success-message {
+  font-size: 18px;
+  color: #27ae60;
+  background-color: #eafaf1;
+  border: 1px solid #d4f4dc;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+@media (max-width: 500px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  .container h1 {
+    font-size: 24px;
+  }
 }
