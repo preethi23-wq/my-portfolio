@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Contact - My Portfolio{% endblock %}
+{% block content %}
+<div class="section">
+  <h1>Contact Me</h1>
+  {% if success %}
+    <p class="success-message">Thank you! Your message was sent.</p>
+  {% endif %}
+  <form method="POST" action="/contact">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</div>
+{% endblock %}

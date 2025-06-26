@@ -4,13 +4,21 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template('index.html')
-@app.route('/contact', methods=['POST'])
+@app.route('/about')
+def about():
+    return render_template('about.html')
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    name = request.form['name']
-    email = request.form['email']
-    message = request.form['message']
-    print(f"Name: {name}, Email: {email}, Message: {message}")
-    return f"<h2>Thank you, {name}! Your message has been received.</h2>"
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+        print(f"Message from {name} ({email}): {message}")
+        return render_template('contact.html', success=True)
+    return render_template('contact.html', success=False)
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 10000))
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
